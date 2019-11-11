@@ -23,7 +23,6 @@ Rfill=imread('fillR.bmp');
 
 
 
-
 %Number
 one=imread('1.bmp');  two=imread('2.bmp');
 three=imread('3.bmp');four=imread('4.bmp');
