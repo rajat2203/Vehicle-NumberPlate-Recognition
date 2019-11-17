@@ -8,7 +8,7 @@ function r=takeboxes(NR,container,chk)
 % grouped. CHK=2 considers y-dimension width grouping and CHK=1 considers
 % y-coordinate grouping.
 
-% gupta's file
+% file changde my me
 takethisbox=[]; % Initialize the variable to an empty matrix.
 for i=1:size(NR,1)
     if NR(i,(2*chk))>=container(1) && NR(i,(2*chk))<=container(2) % If Bounding box is among the container plus tolerence.
