@@ -21,7 +21,7 @@ Pfill=imread('fillP.bmp');
 Qfill=imread('fillQ.bmp');
 Rfill=imread('fillR.bmp');
 
-
+% this file will be changed by rajat
 
 %Number
 one=imread('1.bmp');  two=imread('2.bmp');
