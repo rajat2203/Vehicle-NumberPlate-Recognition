@@ -1,5 +1,6 @@
 %CREATE TEMPLATES
 %Letter
+%jai ho
 A=imread('A.bmp');B=imread('B.bmp');
 C=imread('C.bmp');D=imread('D.bmp');
 E=imread('E.bmp');F=imread('F.bmp');
