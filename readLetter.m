@@ -1,19 +1,14 @@
 function letter=readLetter(snap)
-%READLETTER reads the character fromthe character's binary image.
-%   LETTER=READLETTER(SNAP) outputs the character in class 'char' from the
-%   input binary image SNAP.
 
-load NewTemplates % Loads the templates of characters in the memory.
-snap=imresize(snap,[42 24]); % Resize the input image so it can be compared with the template's images.
+load NewTemplates 
+snap=imresize(snap,[42 24]); 
 comp=[ ];
 for n=1:length(NewTemplates)
-    sem=corr2(NewTemplates{1,n},snap); % Correlation the input image with every image in the template for best matching.
-    comp=[comp sem]; % Record the value of correlation for each template's character.
+    sem=corr2(NewTemplates{1,n},snap); 
+    comp=[comp sem]; 
 end
-vd=find(comp==max(comp)); % Find the index which correspond to the highest matched character.
-%*-*-*-*-*-*-*-*-*-*-*-*-*-
-% Accodrding to the index assign to 'letter'.
-% Alphabets listings.
+vd=find(comp==max(comp)); 
+
 if vd==1 || vd==2
     letter='A';
 elseif vd==3 || vd==4
@@ -66,8 +61,8 @@ elseif vd==32
     letter='Y';
 elseif vd==33
     letter='Z';
-    %*-*-*-*-*
-% Numerals listings.
+    
+
 elseif vd==34
     letter='1';
 elseif vd==35

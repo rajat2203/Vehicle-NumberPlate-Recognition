@@ -1,6 +1,4 @@
-%CREATE TEMPLATES
-%Letter
-%jai ho
+
 A=imread('A.bmp');B=imread('B.bmp');
 C=imread('C.bmp');D=imread('D.bmp');
 E=imread('E.bmp');F=imread('F.bmp');
@@ -22,9 +20,8 @@ Pfill=imread('fillP.bmp');
 Qfill=imread('fillQ.bmp');
 Rfill=imread('fillR.bmp');
 
-% this file will be changed by rajat
 
-%Number
+
 one=imread('1.bmp');  two=imread('2.bmp');
 three=imread('3.bmp');four=imread('4.bmp');
 five=imread('5.bmp'); six=imread('6.bmp');
@@ -41,7 +38,7 @@ ninefill2=imread('fill9_2.bmp');
 
 
 
-%*-*-*-*-*-*-*-*-*-*-*-
+
 letter=[A Afill B Bfill C D Dfill E F G H I J K L M...
     N O Ofill P Pfill Q Qfill R Rfill S T U V W X Y Z];
 
