@@ -1,9 +1,9 @@
 function numberPlateExtraction
-%NUMBERPLATEEXTRACTION extracts the characters from the input number plate image.
+
 
 f=imread('car3.jpg'); % Reading the number plate image.
 f=imresize(f,[400 NaN]); % Resizing the image keeping aspect ratio same.
-g=rgb2gray(f); % Converting the RGB (color) image to gray (intensity).
+g=rgb2gray(f); % Converting the RGB (color) image to gray (intensity).  
 g=medfilt2(g,[3 3]); % Median filtering to remove noise.
 se=strel('disk',1); % Structural element (disk of radius 1) for morphological processing.
 gi=imdilate(g,se); % Dilating the gray image with the structural element.
@@ -49,23 +49,11 @@ if ~isempty(r) % If succesfully indices of desired boxes are achieved.
         noPlate=[noPlate letter]; % Appending every subsequent character in noPlate variable.
     end
     fid = fopen('noPlate.txt', 'wt'); % This portion of code writes the number plate
-    fprintf(fid,'%s\n',noPlate);      % to the text file, if executed a notepad file with the
-    fclose(fid);                      % name noPlate.txt will be open with the number plate written.
+    fprintf(fid,'%s : Characters on Vehicle Number Plate\n',noPlate);      
+    fclose(fid);
     winopen('noPlate.txt')
-    
-%     Uncomment the portion of code below if Database is  to be organized. Since my
-%     project requires database so I have written this code. DB is the .mat
-%     file containing the array of structure of all entries of database.
-%     load DB
-%     for x=1:length(DB)
-%         recordplate=getfield(DB,{1,x},'PlateNumber');
-%         if strcmp(noPlate,recordplate)
-%             disp(DB(x));
-%             disp('*-*-*-*-*-*-*');
-%         end
-%     end
-    
-else % If fail to extract the indexes in 'r' this line of error will be displayed.
+      
+else % Error Message
     fprintf('Unable to extract the characters from the number plate.\n');
     fprintf('The characters on the number plate might not be clear or touching with each other or boundries.\n');
 end
