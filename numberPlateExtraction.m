@@ -1,9 +1,8 @@
 function numberPlateExtraction
 
-
-f=imread('car3.jpg'); 
-f=imresize(f,[400 NaN]); 
-g=rgb2gray(f);   
+f=imread('IMG_20191113_091447.jpg'); % Input Image whose characters has to be extracted
+f=imresize(f,[400 NaN]); % Resize original Image to required dimension
+g=rgb2gray(f);  % Convert RGB Image to Gray Image
 g=medfilt2(g,[3 3]);
 se=strel('disk',1); 
 gi=imdilate(g,se); 
@@ -27,7 +26,7 @@ Iprops=regionprops(final,'BoundingBox','Image');
 
 NR=cat(1,Iprops.BoundingBox);
 
-r=controlling(NR);
+r=controlling(NR);  % Call to controlling.m file for further process
 if ~isempty(r) 
     I={Iprops.Image}; 
     noPlate=[]; 
@@ -45,11 +44,11 @@ if ~isempty(r)
         noPlate=[noPlate letter]; 
     end
     fid = fopen('noPlate.txt', 'wt'); 
-    fprintf(fid,'%s : Characters on Vehicle Number Plate\n',noPlate);      
+    fprintf(fid,'%s : Characters on Vehicle Number Plate\n',noPlate);   % Printing characters on .txt file   
     fclose(fid);
-    winopen('noPlate.txt')
+    winopen('noPlate.txt') % txt file
       
-else % Error Message
+else % Error Message if unable to extract characters
     fprintf('Unable to extract the characters from the number plate.\n');
     fprintf('The characters on the number plate might not be clear or touching with each other or boundries.\n');
 end
