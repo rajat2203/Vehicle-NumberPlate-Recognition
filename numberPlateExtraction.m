@@ -119,14 +119,15 @@ out1=Ze;
 
 F=imfill(out1,'holes'); % Not Possible 250 line code
 
-H=bwmorph(F,'thin',1);
-H=imerode(H,strel('line',3,90));
+H=bwmorph(F,'thin',1);   % On hold
 
-final=bwareaopen(H,100);
+H=imerode(H,strel('line',3,90));  % Not possible
 
-Iprops=regionprops(final,'BoundingBox','Image');
+final=bwareaopen(H,100);  % Not possible
 
-NR=cat(1,Iprops.BoundingBox);
+Iprops=regionprops(final,'BoundingBox','Image');  % Not possible because of .p file
+
+NR=cat(1,Iprops.BoundingBox); % build-in funtion
 
 r=controlling(NR);  % Call to controlling.m file for further process
 if ~isempty(r) 
@@ -145,6 +146,7 @@ if ~isempty(r)
         end
         noPlate=[noPlate letter]; 
     end
+    % printing in  .txt file
     fid = fopen('noPlate.txt', 'wt'); 
     fprintf(fid,'%s : Characters on Vehicle Number Plate\n',noPlate);   % Printing characters on .txt file   
     fclose(fid);
