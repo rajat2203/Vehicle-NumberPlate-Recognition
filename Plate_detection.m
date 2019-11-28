@@ -1,10 +1,10 @@
 close all;
 clear all;
 
-im = imread('Number Plate Images/image1.png');
+im = imread('Number Plate Images/car1.jpeg');
 imgray = rgb2gray(im);
 imbin = imbinarize(imgray);
-im = edge(imgray, 'prewitt');
+im = edge(imbin, 'prewitt');
 
 %Below steps are to find location of number plate
 Iprops=regionprops(im,'BoundingBox','Area', 'Image');
@@ -34,7 +34,10 @@ for i=1:count
    ow = length(Iprops(i).Image(1,:));
    oh = length(Iprops(i).Image(:,1));
    if ow<(h/2) & oh>(h/3)
-       letter=Letter_detection(Iprops(i).Image); % Reading the letter corresponding the binary image 'N'.
-       noPlate=[noPlate letter] % Appending every subsequent character in noPlate variable.
+        % Reading the letter corresponding the binary image 'N'.
+       display(Letter_detection(Iprops(i).Image));
    end
 end
+
+
+

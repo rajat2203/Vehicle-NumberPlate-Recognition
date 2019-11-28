@@ -6,11 +6,11 @@ rec=[ ];
 
 for n=1:length(NewTemplates)
     cor=corr2(NewTemplates{1,n},snap); 
+    display(cor);
     rec=[rec cor]; 
 end
 
 ind=find(rec==max(rec));
-display(ind);
 
 % Alphabets listings.
 if ind==1 || ind==2
